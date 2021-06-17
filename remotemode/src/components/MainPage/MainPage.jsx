@@ -1,11 +1,11 @@
 import './App.css';
 
-function App() {
+function MainPage() {
   return (
     <div className="App">
-      <p>React</p> 
+      <p> React</p> 
     </div>
   );
 }
 
-export default App;
+export default MainPage;
