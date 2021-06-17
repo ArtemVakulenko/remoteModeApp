@@ -1,0 +1,33 @@
+.article-bg{
+  background: #839695;
+}
+
+.article{
+  padding: 64px 120px;
+  &__head{
+    font-size: 36px;
+    color: #fff;
+  }
+  &__img{
+    width: 100%;
+    max-height: 450px;
+    margin-top: 10px;
+  }
+  &__descr{
+    font-weight: 500;
+    font-size: 17px;
+    padding: 30px 0;
+  }
+  &__comments{
+    background: #fff;
+    padding: 18px 35px;
+    &-name{
+      font-size: 20px;
+      font-weight: 700;
+    }
+    &-comment{
+      font-size: 14px;
+
+    }
+  }
+}

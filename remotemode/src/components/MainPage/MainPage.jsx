@@ -1,10 +1,23 @@
-import './App.css';
+import React from 'react';
+import { Container } from 'react-bootstrap';
+import { Card } from '..';
+import data from '../../data/data.json';
+import './MainPage.scss';
 
 function MainPage() {
+  const card = () => {
+    return data.map(el => <Card data={el} key={el.id} />);
+  };
+
   return (
-    <div className="App">
-      <p> React</p> 
+    <div className="main-container">
+      <Container fluid>
+        <main className="main">
+          {card()}
+        </main>
+      </Container>
     </div>
+
   );
 }
 
