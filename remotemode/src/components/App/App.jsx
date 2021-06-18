@@ -1,10 +1,24 @@
 import { Article, Header, MainPage } from '..';
 import './App.scss';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
-import data from '../../data/data.json';
+import firebase from 'firebase';
+import React, { useEffect, useState } from 'react';
+import { validateCreatingCard } from '../../assets/validation';
 
 function App() {
-  const article = data.map(el => {
+  const [fireCollection, setFireCollection] = useState([]);
+
+  const getData = async () => {
+    const db = firebase.firestore();
+    const collections = await db.collection('reactdeved').get();
+    const beforeValidate = collections.docs.map(el => el.data());
+    setFireCollection(validateCreatingCard(beforeValidate));
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const article = fireCollection.map(el => {
     return (
       <Route path={`/article/${el.id}`} key={el.id}>
         <Article data={el} />
@@ -19,7 +33,9 @@ function App() {
         <Route exact path="/">
           <Redirect to="/article" />
         </Route>
-        <Route exact path="/article" component={MainPage} />
+        <Route exact path="/article">
+          <MainPage data={fireCollection} />
+        </Route>
         {article}
       </Switch>
     </Router>
