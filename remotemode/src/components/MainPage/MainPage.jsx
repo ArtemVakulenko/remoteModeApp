@@ -1,19 +1,19 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { Card } from '..';
-import data from '../../data/data.json';
 import './MainPage.scss';
 
-function MainPage() {
-  const card = () => {
-    return data.map(el => <Card data={el} key={el.id} />);
+function MainPage(props) {
+  
+  const createCard = () => {
+    return props.data.map(el => <Card data={el} key={el.description} />);
   };
 
   return (
-    <div className="main-container">
+    <div className="main-bg">
       <Container fluid>
         <main className="main">
-          {card()}
+          {createCard()}
         </main>
       </Container>
     </div>
