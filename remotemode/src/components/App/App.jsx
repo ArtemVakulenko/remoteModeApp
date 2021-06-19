@@ -1,18 +1,20 @@
 import { Article, Header, MainPage } from '..';
 import './App.scss';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
-import firebase from 'firebase';
+import firebase from '../../assets/firebase.js'
+// import firebase from 'firebase'
 import React, { useEffect, useState } from 'react';
-import { validateCreatingCard } from '../../assets/validation';
+// import { validateCreatingCard } from '../../assets/validation';
 
 function App() {
   const [fireCollection, setFireCollection] = useState([]);
 
   const getData = async () => {
     const db = firebase.firestore();
-    const collections = await db.collection('reactdeved').get();
-    const beforeValidate = collections.docs.map(el => el.data());
-    setFireCollection(validateCreatingCard(beforeValidate));
+    const collection = await db.collection('data').get();
+    const data = collection.docs.map(el => el.data());
+    console.log(collection)
+    setFireCollection(data);
   };
   useEffect(() => {
     getData();

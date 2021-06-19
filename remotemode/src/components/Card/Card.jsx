@@ -4,14 +4,14 @@ import { NavLink } from 'react-router-dom';
 import './Card.scss';
 
 function CardItem(props) {
-  const { id, img, description } = props.data;
+  const { id, imageUrl, title } = props.data;
 
   return (
     <Card >
       <Card.Body className="mycard">
         <NavLink to={`/article/${id}`}>
-          <Card.Img src={img} variant="top" />
-          <Card.Text className="mycard__description">{description}</Card.Text>
+          <Card.Img src={imageUrl} variant="top" />
+          <Card.Text className="mycard__description">{title}</Card.Text>
         </NavLink>
       </Card.Body>
     </Card>

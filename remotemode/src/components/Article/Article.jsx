@@ -4,16 +4,16 @@ import './Article.scss';
 import Comment from './Comment';
 
 function Article(props) {
-  const { img, description, articleDescr, сomment } = props.data;
+  const { imageUrl, title, description, expertComment } = props.data;
 
   return (
     <section className="article-bg">
       <Container fluid>
         <article className="article">
-          <h1 className="article__head">{description}</h1>
-          <Image src={img} alt="imageUrl" className="article__img" />
-          <p className="article__descr">{articleDescr}</p>
-          <Comment data={сomment} />
+          <h1 className="article__head">{title}</h1>
+          <Image src={imageUrl} alt="imageUrl" className="article__img" />
+          <p className="article__descr">{description}</p>
+          <Comment data={expertComment} />
         </article>
       </Container>
     </section>
